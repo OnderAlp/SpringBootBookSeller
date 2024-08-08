@@ -29,39 +29,39 @@ public class AuthenticationService implements IAuthenticationService
     {
         Authentication authentication = null;
 
-        logger.error("AS 1");
+        logger.error("Authentication Service 1");
         try {
             authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword())
             );
         }catch (Exception e) {
-            logger.error("AS 1 PATLADI");
+            logger.error("Authentication Service 1 error");
             logger.error(e.getMessage());
         }
 
-        logger.error("AS 2:");
+        logger.error("Authentication Service 2");
 
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
-        logger.error("AS 3:");
+        logger.error("Authentication Service 3");
 
         String jwt = jwtProvider.generateToken(userPrincipal);
 
-        logger.error("AS 4:");
+        logger.error("Authentication Service 4");
 
         logger.error(jwt);
 
         User signInUser = userPrincipal.getUser();
 
-        logger.error("AS 5:");
+        logger.error("Authentication Service 5");
 
         signInUser.setToken(jwt);
 
-        logger.error("AS 6:");
+        logger.error("Authentication Service 6");
 
         logger.error(signInUser.toString());
 
-        logger.error("AS 7:");
+        logger.error("Authentication Service 7");
 
         return signInUser;
     }

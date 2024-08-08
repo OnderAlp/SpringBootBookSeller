@@ -24,7 +24,7 @@ public class BookService implements IBookService
     @Override
     public Book saveBook(Book book)
     {
-        logger.error("BOOK Service");
+        logger.error("Book Service saveBook");
         book.setCreateTime(LocalDateTime.now());
         return bookRepository.save(book);
     }

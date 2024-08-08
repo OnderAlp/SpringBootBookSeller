@@ -38,12 +38,12 @@ public class JwtProvider implements IJwtProvider
     @Override
     public String generateToken(UserPrincipal auth)
     {
-        logger.error("Bu 1");
+        logger.error("JWT Provider 1");
         String authorities = auth.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
-        logger.error("Bu 1.5");
+        logger.error("JWT Provider 1.5");
         return Jwts.builder()
                 .setSubject(auth.getUsername())
                 .claim("roles", authorities)
@@ -56,7 +56,7 @@ public class JwtProvider implements IJwtProvider
     @Override
     public Authentication getAuthentication(HttpServletRequest request)
     {
-        logger.error("Bu 2");
+        logger.error("JWT Provider 2");
         Claims claims = extractClaims(request);
 
         if (claims == null)
@@ -94,7 +94,7 @@ public class JwtProvider implements IJwtProvider
             logger.error("Token is null");
             return false;
         }
-        logger.error("Bu 3");
+        logger.error("JWT Provider 3");
         Claims claims = extractClaims(request);
 
         if (claims == null)
@@ -112,17 +112,17 @@ public class JwtProvider implements IJwtProvider
 
     private Claims extractClaims(HttpServletRequest request)
     {
-        logger.error("Bu 4");
+        logger.error("JWT Provider 4");
         String token = SecurityUtils.extractAuthTokenFromRequest(request);
 
         if (token == null)
         {
-            logger.error("deneme");
+            logger.error("JWT Provider token is null");
             return null;
         }
 
         try {
-            logger.error("Bu 5");
+            logger.error("JWT Provider 5");
             return Jwts.parser()
                     .setSigningKey(JWT_SECRET)
                     .parseClaimsJws(token)

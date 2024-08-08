@@ -40,7 +40,7 @@ public class AuthenticationController
     @PostMapping("sign-in") // api/authentication/sign-in
     public ResponseEntity<?> signIn(@RequestBody User user)
     {
-        logger.error("AUTH CONTROLLER");
+        logger.error("AUTH Controller sign-in");
         return new ResponseEntity<>(authenticationService.signInAndReturnJWT(user), HttpStatus.OK);
     }
 }

@@ -37,7 +37,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter
 
         Authentication authentication = null;
         try{
-            logger.error("p 1");
+            logger.error("JWT Auth Filter 1");
             authentication = jwtProvider.getAuthentication(request);
         }catch (Exception e)
         {
@@ -45,10 +45,10 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter
         }
 
         try{
-            logger.error("p 2");
+            logger.error("JWT Auth Filter 2");
             if (authentication != null && jwtProvider.validateToken(request))
             {
-                logger.error("p 2.5");
+                logger.error("JWT Auth Filter 2.5");
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }catch (Exception e)

@@ -21,7 +21,7 @@ public class BookController
     @PostMapping // api/book
     public ResponseEntity<?> saveBook(@RequestBody Book book)
     {
-        logger.error("BOOK CONTROLLER");
+        logger.error("Book Controller save book");
         return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.CREATED);
     }
 
